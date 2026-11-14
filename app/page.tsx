@@ -272,35 +272,35 @@ export default function SpecUATPage() {
   const coveragePct = Math.round((passedCount / Math.max(1, testCases.length)) * 100);
 
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-100 flex flex-col">
+    <div className="min-h-screen bg-slate-50 text-slate-900 flex flex-col font-sans">
       {/* Top Header */}
-      <header className="border-b border-slate-800 bg-slate-900/60 backdrop-blur sticky top-0 z-40">
+      <header className="border-b border-slate-200 bg-white/95 backdrop-blur sticky top-0 z-40 shadow-xs">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <div className="p-2 rounded-lg bg-blue-600/20 text-blue-400 border border-blue-500/30">
+            <div className="p-2 rounded-lg bg-blue-50 text-blue-600 border border-blue-200">
               <FileCheck2 className="w-5 h-5" />
             </div>
             <div>
-              <span className="font-bold text-lg tracking-tight text-white flex items-center gap-2">
-                Spec<span className="text-blue-400">UAT</span>
-                <span className="text-[10px] uppercase font-semibold px-2 py-0.5 rounded bg-blue-500/20 text-blue-300 border border-blue-500/30">
+              <span className="font-bold text-lg tracking-tight text-slate-900 flex items-center gap-2">
+                Spec<span className="text-blue-600">UAT</span>
+                <span className="text-[10px] uppercase font-semibold px-2 py-0.5 rounded bg-blue-50 text-blue-700 border border-blue-200">
                   Agile Requirements & Testing Platform
                 </span>
               </span>
-              <p className="text-xs text-slate-400">BRD Synthesis, Bidirectional Traceability, UAT Validation & Jira SDLC Alignment</p>
+              <p className="text-xs text-slate-500">BRD Synthesis, Bidirectional Traceability, UAT Validation & Jira SDLC Alignment</p>
             </div>
           </div>
 
           <div className="flex items-center gap-3">
             <div className="hidden sm:flex items-center gap-2 text-xs">
-              <span className="text-slate-400">UAT Coverage:</span>
-              <span className="font-bold text-emerald-400">{coveragePct}%</span>
+              <span className="text-slate-500">UAT Coverage:</span>
+              <span className="font-bold text-emerald-600">{coveragePct}%</span>
             </div>
             <a
               href="https://github.com/TejdeepKodati/spec-uat"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-xs bg-slate-800 hover:bg-slate-700 text-slate-200 px-3 py-1.5 rounded-md border border-slate-700 transition"
+              className="text-xs bg-white hover:bg-slate-50 text-slate-700 px-3 py-1.5 rounded-md border border-slate-300 shadow-xs transition"
             >
               GitHub Repository
             </a>
@@ -308,7 +308,7 @@ export default function SpecUATPage() {
         </div>
 
         {/* Tab Navigation */}
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex overflow-x-auto gap-2 border-t border-slate-800/80 pt-1 text-sm">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex overflow-x-auto gap-2 border-t border-slate-200 pt-1 text-sm">
           {[
             { id: "brd", label: "Requirements Ingestion (BRD)", icon: BookOpen },
             { id: "rtm", label: "Traceability Matrix (RTM)", icon: GitPullRequest },
@@ -324,8 +324,8 @@ export default function SpecUATPage() {
                 onClick={() => setActiveTab(tab.id as any)}
                 className={`flex items-center gap-2 px-3.5 py-2.5 border-b-2 font-medium text-xs sm:text-sm whitespace-nowrap transition-colors ${
                   isActive
-                    ? "border-blue-500 text-blue-400 bg-blue-500/5"
-                    : "border-transparent text-slate-400 hover:text-slate-200 hover:border-slate-700"
+                    ? "border-blue-600 text-blue-600 bg-blue-50/60 font-semibold"
+                    : "border-transparent text-slate-500 hover:text-slate-900 hover:border-slate-300"
                 }`}
               >
                 <Icon className="w-4 h-4" />
@@ -342,8 +342,8 @@ export default function SpecUATPage() {
         {activeTab === "brd" && (
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
             <div className="lg:col-span-1 space-y-4">
-              <div className="bg-slate-900 border border-slate-800 rounded-xl p-4">
-                <h3 className="text-sm font-semibold text-white mb-2">Select Business Initiative</h3>
+              <div className="bg-white border border-slate-200 rounded-xl p-4 shadow-xs">
+                <h3 className="text-sm font-semibold text-slate-900 mb-2">Select Business Initiative</h3>
                 <div className="space-y-2">
                   {SAMPLE_PROJECTS.map((proj) => (
                     <button
@@ -355,26 +355,26 @@ export default function SpecUATPage() {
                       }}
                       className={`w-full text-left p-2.5 rounded-lg border transition ${
                         selectedProject.id === proj.id
-                          ? "bg-blue-950/40 border-blue-500/60 text-white"
-                          : "bg-slate-950 border-slate-800/80 text-slate-300 hover:border-slate-700"
+                          ? "bg-blue-50/80 border-blue-400 text-slate-900 font-medium"
+                          : "bg-slate-50/50 border-slate-200 text-slate-600 hover:border-slate-300 hover:bg-slate-100/50"
                       }`}
                     >
                       <div className="flex items-center justify-between text-xs mb-1">
-                        <span className="font-mono text-blue-400">{proj.id}</span>
-                        <span className="text-[10px] text-slate-400">{proj.domain}</span>
+                        <span className="font-mono text-blue-600 font-semibold">{proj.id}</span>
+                        <span className="text-[10px] text-slate-500 font-medium">{proj.domain}</span>
                       </div>
-                      <div className="text-xs font-semibold">{proj.title}</div>
+                      <div className="text-xs font-semibold text-slate-800">{proj.title}</div>
                     </button>
                   ))}
                 </div>
               </div>
 
-              <div className="bg-slate-900 border border-slate-800 rounded-xl p-4">
-                <h4 className="text-xs font-semibold text-slate-300 mb-2 flex items-center justify-between">
+              <div className="bg-white border border-slate-200 rounded-xl p-4 shadow-xs">
+                <h4 className="text-xs font-semibold text-slate-700 mb-2 flex items-center justify-between">
                   <span>Stakeholder Interview Notes</span>
                   <button
                     onClick={() => setCustomNotes(selectedProject.notes)}
-                    className="text-blue-400 hover:text-blue-300 flex items-center gap-1 text-[11px]"
+                    className="text-blue-600 hover:text-blue-700 flex items-center gap-1 text-[11px] font-medium"
                   >
                     <RefreshCw className="w-3 h-3" /> Reset
                   </button>
@@ -383,22 +383,22 @@ export default function SpecUATPage() {
                   rows={9}
                   value={customNotes}
                   onChange={(e) => setCustomNotes(e.target.value)}
-                  className="w-full bg-slate-950 border border-slate-800 rounded-lg p-2.5 font-mono text-[11px] text-slate-300 focus:outline-none focus:border-blue-500"
+                  className="w-full bg-slate-50 border border-slate-200 rounded-lg p-2.5 font-mono text-[11px] text-slate-800 focus:outline-none focus:bg-white focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
                 />
               </div>
             </div>
 
             <div className="lg:col-span-2 space-y-4">
-              <div className="bg-slate-900 border border-slate-800 rounded-xl p-5">
-                <div className="flex items-center justify-between border-b border-slate-800 pb-3 mb-4">
+              <div className="bg-white border border-slate-200 rounded-xl p-5 shadow-xs">
+                <div className="flex items-center justify-between border-b border-slate-200 pb-3 mb-4">
                   <div>
-                    <span className="text-xs font-mono text-blue-400">{selectedProject.id}</span>
-                    <h2 className="text-lg font-bold text-white">{selectedProject.title}</h2>
-                    <p className="text-xs text-slate-400">Business Requirements Document (BRD) Structured Extract</p>
+                    <span className="text-xs font-mono text-blue-600 font-bold">{selectedProject.id}</span>
+                    <h2 className="text-lg font-bold text-slate-900">{selectedProject.title}</h2>
+                    <p className="text-xs text-slate-500">Business Requirements Document (BRD) Structured Extract</p>
                   </div>
                   <button
                     onClick={() => handleCopy(selectedProject.notes)}
-                    className="px-3 py-1.5 rounded bg-slate-800 hover:bg-slate-700 text-xs text-slate-200 border border-slate-700 flex items-center gap-1.5"
+                    className="px-3 py-1.5 rounded bg-slate-100 hover:bg-slate-200 text-xs text-slate-700 border border-slate-300 flex items-center gap-1.5 transition"
                   >
                     <Copy className="w-3.5 h-3.5" /> Copy BRD
                   </button>
@@ -406,14 +406,14 @@ export default function SpecUATPage() {
 
                 {/* Business Needs */}
                 <div className="mb-4">
-                  <h4 className="text-xs font-semibold uppercase tracking-wider text-blue-400 mb-2 flex items-center gap-1.5">
+                  <h4 className="text-xs font-semibold uppercase tracking-wider text-blue-700 mb-2 flex items-center gap-1.5">
                     <CheckCircle2 className="w-4 h-4" />
                     Documented Business Needs
                   </h4>
-                  <div className="space-y-1.5 bg-slate-950 p-3 rounded-lg border border-slate-800 text-xs">
+                  <div className="space-y-1.5 bg-slate-50 p-3 rounded-lg border border-slate-200 text-xs">
                     {selectedProject.businessNeeds.map((need, i) => (
-                      <div key={i} className="flex items-start gap-2 text-slate-300">
-                        <span className="font-mono text-slate-500 font-bold">REQ-{i + 1}</span>
+                      <div key={i} className="flex items-start gap-2 text-slate-700">
+                        <span className="font-mono text-slate-400 font-bold">REQ-{i + 1}</span>
                         <span>{need}</span>
                       </div>
                     ))}
@@ -422,14 +422,14 @@ export default function SpecUATPage() {
 
                 {/* User Expectations */}
                 <div className="mb-4">
-                  <h4 className="text-xs font-semibold uppercase tracking-wider text-emerald-400 mb-2 flex items-center gap-1.5">
+                  <h4 className="text-xs font-semibold uppercase tracking-wider text-emerald-700 mb-2 flex items-center gap-1.5">
                     <ShieldCheck className="w-4 h-4" />
                     User Expectations & Stakeholder Value
                   </h4>
-                  <div className="space-y-1.5 bg-slate-950 p-3 rounded-lg border border-slate-800 text-xs">
+                  <div className="space-y-1.5 bg-emerald-50/50 p-3 rounded-lg border border-emerald-200/60 text-xs">
                     {selectedProject.userExpectations.map((exp, i) => (
-                      <div key={i} className="flex items-start gap-2 text-slate-300">
-                        <span className="font-mono text-slate-500 font-bold">EXP-{i + 1}</span>
+                      <div key={i} className="flex items-start gap-2 text-slate-700">
+                        <span className="font-mono text-emerald-600 font-bold">EXP-{i + 1}</span>
                         <span>{exp}</span>
                       </div>
                     ))}
@@ -438,22 +438,22 @@ export default function SpecUATPage() {
 
                 {/* Gherkin Acceptance Criteria */}
                 <div>
-                  <h4 className="text-xs font-semibold uppercase tracking-wider text-amber-400 mb-2 flex items-center gap-1.5">
+                  <h4 className="text-xs font-semibold uppercase tracking-wider text-amber-700 mb-2 flex items-center gap-1.5">
                     <Sliders className="w-4 h-4" />
                     Gherkin Acceptance Criteria (Given-When-Then)
                   </h4>
                   <div className="space-y-2">
                     {selectedProject.acceptanceCriteria.map((ac) => (
-                      <div key={ac.id} className="bg-slate-950 border border-slate-800 p-3 rounded-lg text-xs space-y-1">
-                        <div className="flex items-center justify-between border-b border-slate-800 pb-1 mb-1">
-                          <span className="font-mono text-amber-400 font-semibold">{ac.id}</span>
-                          <span className="text-[10px] px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-300 border border-emerald-500/20 font-semibold">
+                      <div key={ac.id} className="bg-slate-50 border border-slate-200 p-3 rounded-lg text-xs space-y-1">
+                        <div className="flex items-center justify-between border-b border-slate-200 pb-1 mb-1">
+                          <span className="font-mono text-amber-700 font-semibold">{ac.id}</span>
+                          <span className="text-[10px] px-2 py-0.5 rounded bg-emerald-100 text-emerald-800 border border-emerald-200 font-semibold">
                             {ac.solutionStatus}
                           </span>
                         </div>
-                        <div><strong className="text-slate-400">GIVEN:</strong> <span className="text-slate-300">{ac.given}</span></div>
-                        <div><strong className="text-slate-400">WHEN:</strong> <span className="text-slate-300">{ac.when}</span></div>
-                        <div><strong className="text-slate-400">THEN:</strong> <span className="text-emerald-300">{ac.then}</span></div>
+                        <div><strong className="text-slate-500">GIVEN:</strong> <span className="text-slate-800">{ac.given}</span></div>
+                        <div><strong className="text-slate-500">WHEN:</strong> <span className="text-slate-800">{ac.when}</span></div>
+                        <div><strong className="text-slate-500">THEN:</strong> <span className="text-emerald-700 font-medium">{ac.then}</span></div>
                       </div>
                     ))}
                   </div>
@@ -465,22 +465,22 @@ export default function SpecUATPage() {
 
         {/* TAB 2: TRACEABILITY MATRIX (RTM) */}
         {activeTab === "rtm" && (
-          <div className="bg-slate-900 border border-slate-800 rounded-xl p-6 space-y-6">
-            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between border-b border-slate-800 pb-4 gap-3">
+          <div className="bg-white border border-slate-200 rounded-xl p-6 space-y-6 shadow-xs">
+            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between border-b border-slate-200 pb-4 gap-3">
               <div>
-                <span className="text-xs font-mono text-blue-400">RTM-AUDIT-VERIFIED</span>
-                <h2 className="text-xl font-bold text-white">Bidirectional Requirements Traceability Matrix (RTM)</h2>
-                <p className="text-xs text-slate-400">
-                  Maps Business Needs $\rightarrow$ Jira User Stories $\rightarrow$ Gherkin Criteria $\rightarrow$ UAT Test Cases
+                <span className="text-xs font-mono text-blue-600 font-bold">RTM-AUDIT-VERIFIED</span>
+                <h2 className="text-xl font-bold text-slate-900">Bidirectional Requirements Traceability Matrix (RTM)</h2>
+                <p className="text-xs text-slate-500">
+                  Maps Business Needs → Jira User Stories → Gherkin Criteria → UAT Test Cases
                 </p>
               </div>
               <div className="flex items-center gap-3">
-                <span className="px-3 py-1 rounded-full text-xs font-semibold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+                <span className="px-3 py-1 rounded-full text-xs font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200">
                   100% Traceability Coverage
                 </span>
                 <button
                   onClick={() => handleCopy("RTM Matrix Data Export")}
-                  className="px-3 py-1.5 bg-slate-800 hover:bg-slate-700 text-xs font-medium text-slate-200 rounded-md border border-slate-700 flex items-center gap-1.5"
+                  className="px-3 py-1.5 bg-slate-100 hover:bg-slate-200 text-xs font-medium text-slate-700 rounded-md border border-slate-300 flex items-center gap-1.5 transition"
                 >
                   <Download className="w-3.5 h-3.5" /> Export RTM
                 </button>
@@ -488,8 +488,8 @@ export default function SpecUATPage() {
             </div>
 
             <div className="overflow-x-auto">
-              <table className="w-full text-left text-xs border border-slate-800 rounded-lg">
-                <thead className="bg-slate-950 text-slate-400 border-b border-slate-800">
+              <table className="w-full text-left text-xs border border-slate-200 rounded-lg">
+                <thead className="bg-slate-100 text-slate-700 border-b border-slate-200 font-semibold">
                   <tr>
                     <th className="p-3">Req ID</th>
                     <th className="p-3">Business Requirement Need</th>
@@ -499,39 +499,39 @@ export default function SpecUATPage() {
                     <th className="p-3">Validation Status</th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-slate-800 text-slate-300 font-mono text-[11px]">
+                <tbody className="divide-y divide-slate-200 text-slate-800 font-mono text-[11px]">
                   <tr>
-                    <td className="p-3 font-semibold text-blue-400">REQ-1</td>
-                    <td className="p-3 font-sans text-xs">Automate real-time daily ledger reconciliation between payment gateways and internal ERP.</td>
-                    <td className="p-3 text-indigo-400 font-bold">UAT-201</td>
-                    <td className="p-3">AC-101</td>
-                    <td className="p-3 text-slate-200">UAT-TEST-01</td>
+                    <td className="p-3 font-semibold text-blue-600">REQ-1</td>
+                    <td className="p-3 font-sans text-xs text-slate-700">Automate real-time daily ledger reconciliation between payment gateways and internal ERP.</td>
+                    <td className="p-3 text-indigo-600 font-bold">UAT-201</td>
+                    <td className="p-3 text-slate-600">AC-101</td>
+                    <td className="p-3 text-slate-700 font-bold">UAT-TEST-01</td>
                     <td className="p-3">
-                      <span className="px-2 py-0.5 rounded text-[10px] bg-emerald-500/10 text-emerald-300 border border-emerald-500/20 font-bold">
+                      <span className="px-2 py-0.5 rounded text-[10px] bg-emerald-100 text-emerald-800 border border-emerald-200 font-bold">
                         VERIFIED (PASS)
                       </span>
                     </td>
                   </tr>
                   <tr>
-                    <td className="p-3 font-semibold text-blue-400">REQ-2</td>
-                    <td className="p-3 font-sans text-xs">Flag any variance exceeding $0.01 with automated transaction freeze and audit trail logging.</td>
-                    <td className="p-3 text-indigo-400 font-bold">UAT-202</td>
-                    <td className="p-3">AC-102</td>
-                    <td className="p-3 text-slate-200">UAT-TEST-02</td>
+                    <td className="p-3 font-semibold text-blue-600">REQ-2</td>
+                    <td className="p-3 font-sans text-xs text-slate-700">Flag any variance exceeding $0.01 with automated transaction freeze and audit trail logging.</td>
+                    <td className="p-3 text-indigo-600 font-bold">UAT-202</td>
+                    <td className="p-3 text-slate-600">AC-102</td>
+                    <td className="p-3 text-slate-700 font-bold">UAT-TEST-02</td>
                     <td className="p-3">
-                      <span className="px-2 py-0.5 rounded text-[10px] bg-emerald-500/10 text-emerald-300 border border-emerald-500/20 font-bold">
+                      <span className="px-2 py-0.5 rounded text-[10px] bg-emerald-100 text-emerald-800 border border-emerald-200 font-bold">
                         VERIFIED (PASS)
                       </span>
                     </td>
                   </tr>
                   <tr>
-                    <td className="p-3 font-semibold text-blue-400">REQ-3</td>
-                    <td className="p-3 font-sans text-xs">Generate end-of-day discrepancy summaries for US finance directors.</td>
-                    <td className="p-3 text-indigo-400 font-bold">UAT-203</td>
-                    <td className="p-3">AC-103</td>
-                    <td className="p-3 text-slate-200">UAT-TEST-03</td>
+                    <td className="p-3 font-semibold text-blue-600">REQ-3</td>
+                    <td className="p-3 font-sans text-xs text-slate-700">Generate end-of-day discrepancy summaries for US finance directors.</td>
+                    <td className="p-3 text-indigo-600 font-bold">UAT-203</td>
+                    <td className="p-3 text-slate-600">AC-103</td>
+                    <td className="p-3 text-slate-700 font-bold">UAT-TEST-03</td>
                     <td className="p-3">
-                      <span className="px-2 py-0.5 rounded text-[10px] bg-emerald-500/10 text-emerald-300 border border-emerald-500/20 font-bold">
+                      <span className="px-2 py-0.5 rounded text-[10px] bg-emerald-100 text-emerald-800 border border-emerald-200 font-bold">
                         VERIFIED (PASS)
                       </span>
                     </td>
@@ -540,9 +540,9 @@ export default function SpecUATPage() {
               </table>
             </div>
 
-            <div className="bg-slate-950 p-4 rounded-lg border border-slate-800 text-xs text-slate-400">
-              <span className="font-semibold text-slate-200">Hopcroft-Karp Bipartite Matching Algorithm: </span>
-              All 3 requirement nodes in partition $U$ possess maximal non-conflicting edges to test execution partition $V$. Zero orphan requirements detected.
+            <div className="bg-blue-50/60 p-4 rounded-lg border border-blue-200 text-xs text-slate-700">
+              <span className="font-semibold text-blue-900">Hopcroft-Karp Bipartite Matching Algorithm: </span>
+              All 3 requirement nodes in partition U possess maximal non-conflicting edges to test execution partition V. Zero orphan requirements detected.
             </div>
           </div>
         )}
@@ -550,21 +550,21 @@ export default function SpecUATPage() {
         {/* TAB 3: UAT TEST RUNNER */}
         {activeTab === "runner" && (
           <div className="space-y-6">
-            <div className="bg-slate-900 border border-slate-800 rounded-xl p-5">
-              <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between border-b border-slate-800 pb-4 mb-4 gap-3">
+            <div className="bg-white border border-slate-200 rounded-xl p-5 shadow-xs">
+              <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between border-b border-slate-200 pb-4 mb-4 gap-3">
                 <div>
-                  <h2 className="text-lg font-bold text-white flex items-center gap-2">
-                    <CheckCircle2 className="w-5 h-5 text-emerald-400" />
+                  <h2 className="text-lg font-bold text-slate-900 flex items-center gap-2">
+                    <CheckCircle2 className="w-5 h-5 text-emerald-600" />
                     User Acceptance Testing (UAT) Execution Cockpit
                   </h2>
-                  <p className="text-xs text-slate-400">
+                  <p className="text-xs text-slate-500">
                     Execute test suites, record actual observations, and validate solution alignment against acceptance criteria.
                   </p>
                 </div>
                 <div className="flex items-center gap-3">
                   <div className="text-right">
-                    <span className="text-[11px] text-slate-400 block">Tests Passed</span>
-                    <span className="text-base font-bold text-emerald-400">
+                    <span className="text-[11px] text-slate-500 block">Tests Passed</span>
+                    <span className="text-base font-bold text-emerald-600">
                       {passedCount} / {testCases.length}
                     </span>
                   </div>
@@ -573,20 +573,20 @@ export default function SpecUATPage() {
 
               <div className="space-y-4">
                 {testCases.map((test) => (
-                  <div key={test.id} className="bg-slate-950 border border-slate-800 rounded-lg p-4 space-y-3">
-                    <div className="flex flex-col sm:flex-row sm:items-center justify-between border-b border-slate-800/80 pb-2 gap-2">
+                  <div key={test.id} className="bg-slate-50/80 border border-slate-200 rounded-lg p-4 space-y-3">
+                    <div className="flex flex-col sm:flex-row sm:items-center justify-between border-b border-slate-200 pb-2 gap-2">
                       <div className="flex items-center gap-2">
-                        <span className="font-mono text-xs font-bold text-blue-400">{test.id}</span>
-                        <h4 className="font-bold text-sm text-slate-100">{test.name}</h4>
+                        <span className="font-mono text-xs font-bold text-blue-600">{test.id}</span>
+                        <h4 className="font-bold text-sm text-slate-900">{test.name}</h4>
                       </div>
                       <button
                         onClick={() => handleStatusToggle(test.id)}
                         className={`px-3 py-1 rounded text-xs font-bold flex items-center gap-1.5 transition ${
                           test.status === "PASSED"
-                            ? "bg-emerald-500/20 text-emerald-300 border border-emerald-500/30"
+                            ? "bg-emerald-100 text-emerald-800 border border-emerald-300"
                             : test.status === "FAILED"
-                            ? "bg-rose-500/20 text-rose-300 border border-rose-500/30"
-                            : "bg-amber-500/20 text-amber-300 border border-amber-500/30"
+                            ? "bg-rose-100 text-rose-800 border border-rose-300"
+                            : "bg-amber-100 text-amber-800 border border-amber-300"
                         }`}
                       >
                         {test.status === "PASSED" && <Check className="w-3.5 h-3.5" />}
@@ -596,14 +596,14 @@ export default function SpecUATPage() {
                       </button>
                     </div>
 
-                    <div className="text-xs text-slate-400">
-                      <strong className="text-slate-300">Preconditions: </strong>
+                    <div className="text-xs text-slate-600">
+                      <strong className="text-slate-800">Preconditions: </strong>
                       {test.preconditions}
                     </div>
 
                     <div className="text-xs space-y-1">
-                      <strong className="text-slate-300 block">Test Steps:</strong>
-                      <div className="bg-slate-900/60 p-2.5 rounded border border-slate-800 text-slate-300 font-mono text-[11px] space-y-0.5">
+                      <strong className="text-slate-800 block">Test Steps:</strong>
+                      <div className="bg-white p-2.5 rounded border border-slate-200 text-slate-700 font-mono text-[11px] space-y-0.5">
                         {test.steps.map((step, idx) => (
                           <div key={idx}>{step}</div>
                         ))}
@@ -611,13 +611,13 @@ export default function SpecUATPage() {
                     </div>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs">
-                      <div className="bg-slate-900/40 p-2.5 rounded border border-slate-800">
-                        <strong className="text-slate-400 block mb-0.5">Expected Outcome:</strong>
-                        <p className="text-slate-300">{test.expected}</p>
+                      <div className="bg-white p-2.5 rounded border border-slate-200">
+                        <strong className="text-slate-500 block mb-0.5">Expected Outcome:</strong>
+                        <p className="text-slate-700">{test.expected}</p>
                       </div>
-                      <div className="bg-slate-900/40 p-2.5 rounded border border-slate-800">
-                        <strong className="text-emerald-400 block mb-0.5">Actual Observed Outcome:</strong>
-                        <p className="text-slate-200">{test.actualObserved}</p>
+                      <div className="bg-white p-2.5 rounded border border-emerald-200">
+                        <strong className="text-emerald-700 block mb-0.5">Actual Observed Outcome:</strong>
+                        <p className="text-slate-800 font-medium">{test.actualObserved}</p>
                       </div>
                     </div>
                   </div>
@@ -630,14 +630,14 @@ export default function SpecUATPage() {
         {/* TAB 4: JIRA AGILE SPRINT PLANNER */}
         {activeTab === "jira" && (
           <div className="space-y-6">
-            <div className="bg-slate-900 border border-slate-800 rounded-xl p-5">
-              <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between border-b border-slate-800 pb-4 mb-4 gap-3">
+            <div className="bg-white border border-slate-200 rounded-xl p-5 shadow-xs">
+              <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between border-b border-slate-200 pb-4 mb-4 gap-3">
                 <div>
-                  <h2 className="text-lg font-bold text-white flex items-center gap-2">
-                    <Kanban className="w-5 h-5 text-blue-400" />
+                  <h2 className="text-lg font-bold text-slate-900 flex items-center gap-2">
+                    <Kanban className="w-5 h-5 text-blue-600" />
                     Jira Agile Backlog & Sprint Alignment Hub
                   </h2>
-                  <p className="text-xs text-slate-400">
+                  <p className="text-xs text-slate-500">
                     Fibonacci story point estimation, MoSCoW prioritization, and sprint assignment.
                   </p>
                 </div>
@@ -646,11 +646,11 @@ export default function SpecUATPage() {
                     handleCopy(
                       "Issue Key,Issue Type,Summary,Story Points,Priority,Status\n" +
                         selectedProject.jiraStories
-                          .map((s) => `${s.key},Story,"${s.summary}",${s.points},${s.priority},${s.status}`)
+                          .map((s) => `${s.key},Story,\"${s.summary}\",${s.points},${s.priority},${s.status}`)
                           .join("\n")
                     )
                   }
-                  className="px-3 py-1.5 rounded bg-blue-600 hover:bg-blue-500 text-white text-xs font-semibold flex items-center gap-1.5 transition"
+                  className="px-3 py-1.5 rounded bg-blue-600 hover:bg-blue-700 text-white text-xs font-semibold flex items-center gap-1.5 transition"
                 >
                   <Download className="w-3.5 h-3.5" /> Export Jira CSV
                 </button>
@@ -658,30 +658,30 @@ export default function SpecUATPage() {
 
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                 {selectedProject.jiraStories.map((story) => (
-                  <div key={story.key} className="bg-slate-950 border border-slate-800 rounded-lg p-4 space-y-3">
+                  <div key={story.key} className="bg-slate-50/80 border border-slate-200 rounded-lg p-4 space-y-3">
                     <div className="flex items-center justify-between text-xs">
-                      <span className="font-mono text-blue-400 font-bold">{story.key}</span>
+                      <span className="font-mono text-blue-600 font-bold">{story.key}</span>
                       <span
                         className={`px-2 py-0.5 rounded text-[10px] font-bold ${
                           story.priority === "High"
-                            ? "bg-rose-500/20 text-rose-300"
-                            : "bg-blue-500/20 text-blue-300"
+                            ? "bg-rose-100 text-rose-700 border border-rose-200"
+                            : "bg-blue-100 text-blue-700 border border-blue-200"
                         }`}
                       >
                         {story.priority} Priority
                       </span>
                     </div>
 
-                    <h4 className="text-xs font-semibold text-white leading-snug">{story.summary}</h4>
+                    <h4 className="text-xs font-semibold text-slate-900 leading-snug">{story.summary}</h4>
 
-                    <div className="flex items-center justify-between pt-2 border-t border-slate-800 text-[11px] text-slate-400">
-                      <span>Story Points: <strong className="text-slate-200">{story.points} SP</strong></span>
-                      <span>{story.sprint}</span>
+                    <div className="flex items-center justify-between pt-2 border-t border-slate-200 text-[11px] text-slate-500">
+                      <span>Story Points: <strong className="text-slate-800">{story.points} SP</strong></span>
+                      <span className="font-medium text-slate-600">{story.sprint}</span>
                     </div>
 
                     <div className="text-[11px]">
                       <span className="text-slate-500">Status: </span>
-                      <span className="text-emerald-400 font-semibold">{story.status}</span>
+                      <span className="text-emerald-700 font-semibold">{story.status}</span>
                     </div>
                   </div>
                 ))}
@@ -694,44 +694,44 @@ export default function SpecUATPage() {
         {activeTab === "reports" && (
           <div className="space-y-6">
             <div className="grid grid-cols-1 sm:grid-cols-4 gap-4">
-              <div className="bg-slate-900 border border-slate-800 rounded-xl p-4">
-                <span className="text-xs text-slate-400">UAT Verification Rate</span>
-                <div className="text-2xl font-bold text-emerald-400 mt-1">100%</div>
+              <div className="bg-white border border-slate-200 rounded-xl p-4 shadow-xs">
+                <span className="text-xs text-slate-500 font-medium">UAT Verification Rate</span>
+                <div className="text-2xl font-bold text-emerald-600 mt-1">100%</div>
                 <span className="text-[11px] text-slate-500 mt-1 block">3 of 3 Test Scenarios Passed</span>
               </div>
-              <div className="bg-slate-900 border border-slate-800 rounded-xl p-4">
-                <span className="text-xs text-slate-400">Requirement Traceability</span>
-                <div className="text-2xl font-bold text-blue-400 mt-1">100%</div>
+              <div className="bg-white border border-slate-200 rounded-xl p-4 shadow-xs">
+                <span className="text-xs text-slate-500 font-medium">Requirement Traceability</span>
+                <div className="text-2xl font-bold text-blue-600 mt-1">100%</div>
                 <span className="text-[11px] text-slate-500 mt-1 block">Zero Orphan Criteria</span>
               </div>
-              <div className="bg-slate-900 border border-slate-800 rounded-xl p-4">
-                <span className="text-xs text-slate-400">Total Story Points Delivered</span>
-                <div className="text-2xl font-bold text-white mt-1">16 SP</div>
+              <div className="bg-white border border-slate-200 rounded-xl p-4 shadow-xs">
+                <span className="text-xs text-slate-500 font-medium">Total Story Points Delivered</span>
+                <div className="text-2xl font-bold text-slate-900 mt-1">16 SP</div>
                 <span className="text-[11px] text-slate-500 mt-1 block">Across Sprint 24 & 25</span>
               </div>
-              <div className="bg-slate-900 border border-slate-800 rounded-xl p-4">
-                <span className="text-xs text-slate-400">Release Go/No-Go Decision</span>
-                <div className="text-2xl font-bold text-emerald-400 mt-1">GO</div>
-                <span className="text-[11px] text-emerald-500 mt-1 block">Approved for Production</span>
+              <div className="bg-white border border-slate-200 rounded-xl p-4 shadow-xs">
+                <span className="text-xs text-slate-500 font-medium">Release Go/No-Go Decision</span>
+                <div className="text-2xl font-bold text-emerald-600 mt-1">GO</div>
+                <span className="text-[11px] text-emerald-600 font-medium mt-1 block">Approved for Production</span>
               </div>
             </div>
 
-            <div className="bg-slate-900 border border-slate-800 rounded-xl p-5">
-              <div className="flex items-center justify-between border-b border-slate-800 pb-3 mb-4">
+            <div className="bg-white border border-slate-200 rounded-xl p-5 shadow-xs">
+              <div className="flex items-center justify-between border-b border-slate-200 pb-3 mb-4">
                 <div>
-                  <h3 className="text-sm font-semibold text-white">Stakeholder Executive BRD & UAT Sign-Off Document</h3>
-                  <p className="text-xs text-slate-400">Ready for Microsoft Word / Excel / PDF distribution to leadership</p>
+                  <h3 className="text-sm font-semibold text-slate-900">Stakeholder Executive BRD & UAT Sign-Off Document</h3>
+                  <p className="text-xs text-slate-500">Ready for Microsoft Word / Excel / PDF distribution to leadership</p>
                 </div>
                 <button
                   onClick={() => handleCopy("Executive Sign-off summary text")}
-                  className="px-3 py-1.5 rounded bg-slate-800 hover:bg-slate-700 text-xs text-slate-200 border border-slate-700 flex items-center gap-1.5"
+                  className="px-3 py-1.5 rounded bg-slate-100 hover:bg-slate-200 text-xs text-slate-700 border border-slate-300 flex items-center gap-1.5 transition"
                 >
                   <Copy className="w-3.5 h-3.5" /> Copy Executive Summary
                 </button>
               </div>
 
-              <div className="bg-slate-950 p-4 rounded-lg border border-slate-800 text-xs font-mono text-slate-300 space-y-2">
-                <div className="text-blue-400 font-bold">PROJECT: {selectedProject.title}</div>
+              <div className="bg-slate-50 p-4 rounded-lg border border-slate-200 text-xs font-mono text-slate-800 space-y-2">
+                <div className="text-blue-700 font-bold">PROJECT: {selectedProject.title}</div>
                 <div>[STATUS] User Acceptance Testing (UAT): COMPLETED & SIGNED OFF</div>
                 <div>[COMPLIANCE] Verification of solution against documented business requirements: 100% CONFORMANT</div>
                 <div>[AUDIT TRAIL] Traceability Matrix verified by Product SME & Quality Assurance leads.</div>
@@ -743,14 +743,14 @@ export default function SpecUATPage() {
       </main>
 
       {/* Footer */}
-      <footer className="border-t border-slate-800 bg-slate-950 py-4 text-xs text-slate-500 text-center">
+      <footer className="border-t border-slate-200 bg-white py-4 text-xs text-slate-500 text-center">
         <div className="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-2">
           <span>SpecUAT — Agile Requirements Analysis, Bidirectional Traceability & UAT Platform</span>
           <a
             href="https://github.com/TejdeepKodati/spec-uat"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-slate-400 hover:text-white transition"
+            className="text-slate-600 hover:text-blue-600 transition font-medium"
           >
             made with ♥ by Tejdeep
           </a>
